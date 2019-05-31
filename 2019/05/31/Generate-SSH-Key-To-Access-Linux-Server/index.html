@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="Generate SSHCreate a SSH Key Pair1$ ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME] For example, if we want to create the keys named maxserverkey1 under path ~/.ssh/, and we want to log in as">
+  <meta name="description" content="Generate SSHCreate a SSH Key Pair1$ ssh-keygen -t rsa -f ~/.ssh/`[KEY_FILENAME]` -C `[USERNAME]` For example, if we want to create the keys named *maxserverkey1* under path *~/.ssh/*, and we want to l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Generate SSH Key To Access Linux Server">
 <meta property="og:url" content="https://fan-max.github.io/2019/05/31/Generate-SSH-Key-To-Access-Linux-Server/index.html">
 <meta property="og:site_name" content="MaxFan">
-<meta property="og:description" content="Generate SSHCreate a SSH Key Pair1$ ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME] For example, if we want to create the keys named maxserverkey1 under path ~/.ssh/, and we want to log in as">
+<meta property="og:description" content="Generate SSHCreate a SSH Key Pair1$ ssh-keygen -t rsa -f ~/.ssh/`[KEY_FILENAME]` -C `[USERNAME]` For example, if we want to create the keys named *maxserverkey1* under path *~/.ssh/*, and we want to l">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-31T14:40:57.638Z">
+<meta property="og:updated_time" content="2019-05-31T15:57:15.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Generate SSH Key To Access Linux Server">
-<meta name="twitter:description" content="Generate SSHCreate a SSH Key Pair1$ ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME] For example, if we want to create the keys named maxserverkey1 under path ~/.ssh/, and we want to log in as">
+<meta name="twitter:description" content="Generate SSHCreate a SSH Key Pair1$ ssh-keygen -t rsa -f ~/.ssh/`[KEY_FILENAME]` -C `[USERNAME]` For example, if we want to create the keys named *maxserverkey1* under path *~/.ssh/*, and we want to l">
 
 
 
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="Created: 2019-05-31 22:32:29 / Modified: 22:40:57" itemprop="dateCreated datePublished" datetime="2019-05-31T22:32:29+08:00">2019-05-31</time>
+              <time title="Created: 2019-05-31 22:32:29 / Modified: 23:57:15" itemprop="dateCreated datePublished" datetime="2019-05-31T22:32:29+08:00">2019-05-31</time>
             
 
             
@@ -371,16 +371,16 @@
       
 
       
-        <h2 id="Generate-SSH"><a href="#Generate-SSH" class="headerlink" title="Generate SSH"></a>Generate SSH</h2><h3 id="Create-a-SSH-Key-Pair"><a href="#Create-a-SSH-Key-Pair" class="headerlink" title="Create a SSH Key Pair"></a>Create a SSH Key Pair</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME]</span><br></pre></td></tr></table></figure>
-<p>For example, if we want to create the keys named <em>maxserverkey1</em> under path <em>~/.ssh/</em>, and we want to log in as user named <em>maxfan</em></p>
+        <h2 id="Generate-SSH"><a href="#Generate-SSH" class="headerlink" title="Generate SSH"></a>Generate SSH</h2><h3 id="Create-a-SSH-Key-Pair"><a href="#Create-a-SSH-Key-Pair" class="headerlink" title="Create a SSH Key Pair"></a>Create a SSH Key Pair</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -f ~/.ssh/`[KEY_FILENAME]` -C `[USERNAME]`</span><br></pre></td></tr></table></figure>
+<p>For example, if we want to create the keys named <code>*maxserverkey1*</code> under path <code>*~/.ssh/*</code>, and we want to log in as user named <code>*maxfan*</code></p>
 <p>we can use following command</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -f ~/.ssh/maxserverkey1 -C maxfan</span><br></pre></td></tr></table></figure>
 <p>if it works, you can find two keys uner path ~/.ssh</p>
 <ul>
-<li>public key: maxserverkey1</li>
-<li>private key: maxserverkey1.pub</li>
+<li>public key: <code>maxserverkey1</code></li>
+<li>private key: <code>maxserverkey1.pub</code></li>
 </ul>
-<p>and we need to upload the <em>public keys</em> to server (VM)</p>
+<p>and we need to upload the <code>*public keys*</code> to server (VM)</p>
 <p>so when we want to access the instance, we just need to use following command</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh [USER_NAME]@[SERVER_NAME]  -i ~/.ssh/[KEY_FILENAME]</span><br></pre></td></tr></table></figure>
 
