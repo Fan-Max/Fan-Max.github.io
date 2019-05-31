@@ -286,6 +286,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/05/31/Generate-SSH-Key-To-Access-Linux-Server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaxFan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/31/Generate-SSH-Key-To-Access-Linux-Server/" class="post-title-link" itemprop="url">Generate SSH Key To Access Linux Server</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-31 22:32:29 / Modified: 22:40:57" itemprop="dateCreated datePublished" datetime="2019-05-31T22:32:29+08:00">2019-05-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Generate-SSH"><a href="#Generate-SSH" class="headerlink" title="Generate SSH"></a>Generate SSH</h2><h3 id="Create-a-SSH-Key-Pair"><a href="#Create-a-SSH-Key-Pair" class="headerlink" title="Create a SSH Key Pair"></a>Create a SSH Key Pair</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME]</span><br></pre></td></tr></table></figure>
+<p>For example, if we want to create the keys named <em>maxserverkey1</em> under path <em>~/.ssh/</em>, and we want to log in as user named <em>maxfan</em></p>
+<p>we can use following command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -f ~/.ssh/maxserverkey1 -C maxfan</span><br></pre></td></tr></table></figure>
+<p>if it works, you can find two keys uner path ~/.ssh</p>
+<ul>
+<li>public key: maxserverkey1</li>
+<li>private key: maxserverkey1.pub</li>
+</ul>
+<p>and we need to upload the <em>public keys</em> to server (VM)</p>
+<p>so when we want to access the instance, we just need to use following command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh [USER_NAME]@[SERVER_NAME]  -i ~/.ssh/[KEY_FILENAME]</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/05/28/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -348,7 +502,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-31 22:21:27" itemprop="dateModified" datetime="2019-05-31T22:21:27+08:00">2019-05-31</time>
+                <time title="Modified: 2019-05-31 22:28:36" itemprop="dateModified" datetime="2019-05-31T22:28:36+08:00">2019-05-31</time>
               
             
           </span>
@@ -385,7 +539,7 @@
         
           
             <p>Welcome to <a href="https://fan-max.github.io">myblog</a><br>This is the first one.</p>
-<p><img src="https://d.pr/i/Y0sC0t" alt></p>
+<p><img src="https://cdn-std.dprcdn.net/files/acc_136293/Y0sC0t" alt="milk"></p>
 
           
         
@@ -469,7 +623,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
