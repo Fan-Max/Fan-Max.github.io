@@ -286,6 +286,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/08/06/write-this-on-2019-08-06/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaxFan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/06/write-this-on-2019-08-06/" class="post-title-link" itemprop="url">GitHUB HEAD Pointer Introduction</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-06 16:51:08 / Modified: 16:57:46" itemprop="dateCreated datePublished" datetime="2019-08-06T16:51:08+08:00">2019-08-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="分离头指针"><a href="#分离头指针" class="headerlink" title="分离头指针"></a>分离头指针</h1><p>==============</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>分离头指针</li>
+<li>HEAD 含义</li>
+<li>git diff</li>
+</ul>
+<h3 id="分离头指针-Detached-HEAD"><a href="#分离头指针-Detached-HEAD" class="headerlink" title="分离头指针 (Detached HEAD)"></a>分离头指针 (Detached HEAD)</h3><p>有时候想尝试性修改某些内容（实验），也许并不会真的提交到分支，这时候可以使用分离头指针，修改的内容不会进入任何分支。</p>
+<p>当修改内容的头指针没有与任何branch挂钩时，如果这时将头指针指向了某个分支（master），刚刚做的修改会被git当作垃圾废弃。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml on git:master o</span><br><span class="line">$ git checkout 5009f3a5f4</span><br><span class="line">Note: checking out <span class="string">'5009f3a5f4'</span>.</span><br><span class="line"></span><br><span class="line">You are <span class="keyword">in</span> <span class="string">'detached HEAD'</span> state. You can look around, make experimental</span><br><span class="line">changes and commit them, and you can discard any commits you make <span class="keyword">in</span> this</span><br><span class="line">state without impacting any branches by performing another checkout.</span><br><span class="line"></span><br><span class="line">If you want to create a new branch to retain commits you create, you may</span><br><span class="line"><span class="keyword">do</span> so (now or later) by using -b with the checkout <span class="built_in">command</span> again. Example:</span><br><span class="line"></span><br><span class="line">  git checkout -b &lt;new-branch-name&gt;</span><br><span class="line"></span><br><span class="line">HEAD is now at 5009f3a Add index.html</span><br></pre></td></tr></table></figure>
+<p>修改README 文件（添加一行即可）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml on git:5009f3a o</span><br><span class="line">$ ls</span><br><span class="line">README.md  index.html</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml on git:5009f3a o</span><br><span class="line">$ vim README.md</span><br></pre></td></tr></table></figure>
+<p>如果这时再将HEAD指向master，刚才做的修改会被废弃（可以进入gitk –all 查看）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml on git:5009f3a x</span><br><span class="line">$ git checkout master</span><br></pre></td></tr></table></figure>
+<h3 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h3><p>HEAD归根到底其实还是指向了一个commit，并且可以指代那个commit</p>
+<h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3><p>git diff 用来比较两次commit的不同<br>可以使用HEAD指代当前分支最后一次commit或者<br>HEAD~1 , HEAD~2 分别表示倒数一次，倒数二次</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml on git:master x</span><br><span class="line">$ Git diff a8a599a4dd07 0434ef25597</span><br><span class="line">$ Git diff HEAD HEAD~1</span><br><span class="line">$ Git diff HEAD HEAD~2</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn-std.dprcdn.net/files/acc_136293/AX6EUC" alt="relationship"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/05/31/Generate-SSH-Key-To-Access-Linux-Server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -640,7 +799,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
