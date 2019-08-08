@@ -286,6 +286,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/08/08/Markdown-Practice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaxFan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/08/Markdown-Practice/" class="post-title-link" itemprop="url">Markdown Practice</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-08 19:29:00 / Modified: 19:29:38" itemprop="dateCreated datePublished" datetime="2019-08-08T19:29:00+08:00">2019-08-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="This-is-heading-1"><a href="#This-is-heading-1" class="headerlink" title="This is heading 1"></a>This is heading 1</h1><p>==============</p>
+<h1 id="This-is-leading-2"><a href="#This-is-leading-2" class="headerlink" title="This is leading 2"></a>This is leading 2</h1><h3 id="This-is-leading-2-1"><a href="#This-is-leading-2-1" class="headerlink" title="This is leading 2.1"></a>This is leading 2.1</h3><h3 id="This-is-leading-2-2"><a href="#This-is-leading-2-2" class="headerlink" title="This is leading 2.2"></a>This is leading 2.2</h3><p>This is <strong>bold</strong> line.<br>This is anotehr <strong>italic</strong> line.<br>This is  <strong><em>bold and italic</em></strong> line. </p>
+<p>This is <code>line with background</code>. </p>
+<p>This is <a href="https://www.apple.com.cn" target="_blank" rel="noopener">apple official website</a>. </p>
+<p>This is list :</p>
+<ul>
+<li>item 1 </li>
+<li>item 2</li>
+<li>item 3 </li>
+</ul>
+<p>This is list with hyper link :</p>
+<ul>
+<li><a href="https://www.sina.com.cn" target="_blank" rel="noopener">Sina</a></li>
+<li><a href="https://www.sohu.com" target="_blank" rel="noopener">Sohu</a></li>
+</ul>
+<p>this is a image : </p>
+<p><img src="https://cdn-std.dprcdn.net/files/acc_136293/oMnMtM" alt="lovely smile"></p>
+<p>This is linux command </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">'fan'</span></span><br><span class="line">$ git config --global user.email <span class="string">'maxffq@me.com'</span></span><br></pre></td></tr></table></figure>
+<p>This is python code </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="comment"># [START auth_http_implicit]</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">implicit</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">import</span> google.auth</span><br><span class="line">    <span class="keyword">from</span> google.auth.transport <span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Get the credentials and project ID from the environment.</span></span><br><span class="line">    credentials, project = google.auth.default(</span><br><span class="line">        scopes=[<span class="string">'https://www.googleapis.com/auth/cloud-platform'</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Create a requests Session object with the credentials.</span></span><br><span class="line">    session = requests.AuthorizedSession(credentials)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Make an authenticated API request</span></span><br><span class="line">    response = session.get(</span><br><span class="line">        <span class="string">'https://www.googleapis.com/storage/v1/b'</span>.format(project),</span><br><span class="line">        params=&#123;<span class="string">'project'</span>: project&#125;)</span><br><span class="line">    response.raise_for_status()</span><br><span class="line">    buckets = response.json()</span><br></pre></td></tr></table></figure>
+<p>This is markdown </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myWindow;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">openWin</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  myWindow = <span class="built_in">window</span>.open(<span class="string">""</span>, <span class="string">""</span>, <span class="string">"width=400, height=200"</span>);</span><br><span class="line">  myWindow.blur();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">blurWin</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  myWindow.blur();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">focusWin</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  myWindow.focus();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This is blockquotes: </p>
+<blockquote>
+<p>Knowledge is power.<br>——Bacon</p>
+</blockquote>
+<p>Quote break.</p>
+<blockquote>
+<p>天下为公<br>孙文</p>
+</blockquote>
+<p> Three or more…</p>
+<hr>
+<p>Hyphens</p>
+<hr>
+<p>Asterisks</p>
+<hr>
+<p>videos with a photo </p>
+<p><a href="https://www.youtube.com/watch?v=I1OO6WaxqEg" target="_blank" rel="noopener"><img src="https://cdn-std.dprcdn.net/files/acc_136293/49XXca" alt="IMAGE ALT TEXT HERE"></a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/08/08/Learn-Git-Lesson07-分支与commit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1807,7 +1988,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
