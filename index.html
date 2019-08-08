@@ -286,6 +286,487 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/08/08/Learn-Git-Lesson07-分支与commit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaxFan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/08/Learn-Git-Lesson07-分支与commit/" class="post-title-link" itemprop="url">Learn Git Lesson07 - 分支与commit</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-08 19:20:58 / Modified: 19:21:16" itemprop="dateCreated datePublished" datetime="2019-08-08T19:20:58+08:00">2019-08-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="分支与commit"><a href="#分支与commit" class="headerlink" title="分支与commit"></a>分支与commit</h1><p>==============</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>删除分支</li>
+<li>对历史上的commit修改commit message（变基操作）</li>
+<li>合并多个commit为一个commit</li>
+</ul>
+<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><p>git branch -d &lt;分支名&gt;</p>
+<p>如果遇到报警：将修改内容合并到主分支，加入我们不需要合并，可以将-d 改为-D</p>
+<p>git branch -D &lt;分支名&gt;</p>
+<h3 id="变基（rebase）"><a href="#变基（rebase）" class="headerlink" title="变基（rebase）"></a>变基（rebase）</h3><p>git rebase -i &lt;选择需要改变的上一个commit ID&gt;</p>
+<p>假设需要修改 ‘Add javascript’ 为 ‘Introduce js folder’</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">9391244 (HEAD -&gt; master) rename css.02 to css.02.backup</span><br><span class="line">0d38c85 (origin/master, origin/HEAD) Add logo</span><br><span class="line">`a8a599a Add javascript`</span><br><span class="line">c7e0c93 (tag: TagForCssfile) Add css file</span><br><span class="line">5009f3a Add index.html</span><br><span class="line">d000057 Initial commit</span><br></pre></td></tr></table></figure>
+<p>进入rebase<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> rebase -i c7e0c93</span><br></pre></td></tr></table></figure></p>
+<p>Change pick to reword </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reward a8a599a Add java script</span><br></pre></td></tr></table></figure>
+<p>then :wq to save and quit</p>
+<p>change descritpion </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Introduce js folder</span><br></pre></td></tr></table></figure>
+<p>then :wq to save and quit</p>
+<p>Verify it again </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> <span class="built_in">log</span> --oneline</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">26e4a77 (HEAD -&gt; master) Change README.md</span><br><span class="line">90d49b0 rename css.02 to css.02.backup</span><br><span class="line">4d1e03f Add logo</span><br><span class="line">`5b9bc74 Introduce js folder`</span><br><span class="line">c7e0c93 (tag: TagForCssfile) Add css file</span><br><span class="line">5009f3a Add index.html</span><br><span class="line">d000057 Initial commit</span><br></pre></td></tr></table></figure>
+<p>please note: <strong>the commit id changes</strong></p>
+<h3 id="合并多个commit-为一个commit"><a href="#合并多个commit-为一个commit" class="headerlink" title="合并多个commit 为一个commit"></a>合并多个commit 为一个commit</h3><p>假设需要将 5009f3a - 90d49b0 合并为一个commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">26e4a77 (HEAD -&gt; mypr1, master) Change README.md</span><br><span class="line">90d49b0 rename css.02 to css.02.backup</span><br><span class="line">4d1e03f Add logo</span><br><span class="line">5b9bc74 Introduce js folder</span><br><span class="line">c7e0c93 (tag: TagForCssfile) Add css file</span><br><span class="line">5009f3a Add index.html</span><br><span class="line">d000057 Initial commit</span><br></pre></td></tr></table></figure>
+<p>需要从d000057开始rebase</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> rebase -i d000057</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pick 5009f3a Add index.html</span><br><span class="line">s c7e0c93 Add css file</span><br><span class="line">s 5b9bc74 Introduce js folder</span><br><span class="line">s 4d1e03f Add <span class="built_in">log</span></span><br><span class="line">s 90d49b0 rename css.02 to css.02.backup</span><br><span class="line">pick 26e4a77 Change README.md</span><br></pre></td></tr></table></figure>
+<p>:wq! and continue </p>
+<p>insert one line to indicate the merge reason</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Create one start web page index.html</span><br><span class="line"></span><br><span class="line">Add index.html</span><br><span class="line">Add css file</span><br><span class="line">Introduce js folder</span><br><span class="line">Add logo</span><br><span class="line">Rename css.02 to css02.backup</span><br></pre></td></tr></table></figure>
+<p>:wq! and continue </p>
+<p>git log 校验 : 合并成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml on git:d000057 o [1:30:10] C:1</span><br><span class="line">$* commit 884094893fd57e254d36f24474ca0d715149f710 (HEAD -&gt; mypr1)</span><br><span class="line">| Author: max &lt;maxffq@gmail.com&gt;</span><br><span class="line">| Date:   Mon Aug 5 00:58:43 2019 +0800</span><br><span class="line">|</span><br><span class="line">|     Change README.md</span><br><span class="line">|</span><br><span class="line">|* commit d80a81ae6e2c04209b3839db2dc30c2dc8ef753b</span><br><span class="line">| Author: max &lt;maxffq@gmail.com&gt;</span><br><span class="line">| Date:   Tue Jul 30 16:47:44 2019 +0800</span><br><span class="line">|</span><br><span class="line">|     Create one start web page index.html</span><br><span class="line">|     Add index.html</span><br><span class="line">|     Add css file</span><br><span class="line">|     Introduce js folder</span><br><span class="line">|     Add logo</span><br><span class="line">|     rename css.02 to css.02.backup</span><br><span class="line">|</span><br><span class="line">| commit d000057b45d478475052e49399e8d724c23c5932</span><br><span class="line">  Author: Max-Van &lt;35359341+Max-Van@users.noreply.github.com&gt;</span><br><span class="line">  Date:   Tue Jul 30 16:36:52 2019 +0800</span><br><span class="line"></span><br><span class="line">      Initial commit</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/08/08/Learn-Git-Lesson06-分离头指针/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaxFan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/08/Learn-Git-Lesson06-分离头指针/" class="post-title-link" itemprop="url">Learn Git Lesson06 - 分离头指针</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-08 19:20:13 / Modified: 19:20:28" itemprop="dateCreated datePublished" datetime="2019-08-08T19:20:13+08:00">2019-08-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="分离头指针"><a href="#分离头指针" class="headerlink" title="分离头指针"></a>分离头指针</h1><p>==============</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>分离头指针</li>
+<li>HEAD 含义</li>
+<li>git diff</li>
+</ul>
+<h3 id="分离头指针-Detached-HEAD"><a href="#分离头指针-Detached-HEAD" class="headerlink" title="分离头指针 (Detached HEAD)"></a>分离头指针 (Detached HEAD)</h3><p>有时候想尝试性修改某些内容（实验），也许并不会真的提交到分支，这时候可以使用分离头指针，修改的内容不会进入任何分支。</p>
+<p>当修改内容的头指针没有与任何branch挂钩时，如果这时将头指针指向了某个分支（master），刚刚做的修改会被git当作垃圾废弃。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml on git:master o</span><br><span class="line">$ git checkout 5009f3a5f4</span><br><span class="line">Note: checking out <span class="string">'5009f3a5f4'</span>.</span><br><span class="line"></span><br><span class="line">You are <span class="keyword">in</span> <span class="string">'detached HEAD'</span> state. You can look around, make experimental</span><br><span class="line">changes and commit them, and you can discard any commits you make <span class="keyword">in</span> this</span><br><span class="line">state without impacting any branches by performing another checkout.</span><br><span class="line"></span><br><span class="line">If you want to create a new branch to retain commits you create, you may</span><br><span class="line"><span class="keyword">do</span> so (now or later) by using -b with the checkout <span class="built_in">command</span> again. Example:</span><br><span class="line"></span><br><span class="line">  git checkout -b &lt;new-branch-name&gt;</span><br><span class="line"></span><br><span class="line">HEAD is now at 5009f3a Add index.html</span><br></pre></td></tr></table></figure>
+<p>修改README 文件（添加一行即可）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml on git:5009f3a o </span><br><span class="line">$ ls</span><br><span class="line">README.md  index.html</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml on git:5009f3a o </span><br><span class="line">$ vim README.md</span><br></pre></td></tr></table></figure>
+<p>如果这时再将HEAD指向master，刚才做的修改会被废弃（可以进入gitk –all 查看）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml on git:5009f3a x</span><br><span class="line">$ git checkout master</span><br></pre></td></tr></table></figure>
+<h3 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h3><p>HEAD归根到底其实还是指向了一个commit，并且可以指代那个commit</p>
+<h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3><p>git diff 用来比较两次commit的不同<br>可以使用HEAD指代当前分支最后一次commit或者<br>HEAD~1 , HEAD~2 分别表示倒数一次，倒数二次</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml on git:master x </span><br><span class="line">$ Git diff a8a599a4dd07 0434ef25597</span><br><span class="line">$ Git diff HEAD HEAD~1</span><br><span class="line">$ Git diff HEAD HEAD~2</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/08/08/Learn-Git-Lesson05-Commit-Tree-Blob/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaxFan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/08/Learn-Git-Lesson05-Commit-Tree-Blob/" class="post-title-link" itemprop="url">Learn Git Lesson05 - Commit,Tree,Blob</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-08 19:19:10 / Modified: 19:19:32" itemprop="dateCreated datePublished" datetime="2019-08-08T19:19:10+08:00">2019-08-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Commit-Tree-Blob-关系"><a href="#Commit-Tree-Blob-关系" class="headerlink" title="Commit, Tree, Blob 关系"></a>Commit, Tree, Blob 关系</h1><p>==============</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>commit,tree and blob 的关系(demo)</li>
+</ul>
+<p><img src="https://cdn-std.dprcdn.net/files/acc_136293/AX6EUC" alt="relationship"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/08/08/Learn-Git-Lesson04-git-简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1326,7 +1807,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
