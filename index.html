@@ -286,6 +286,692 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/08/08/Learn-Git-Lesson04-git-简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaxFan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/08/Learn-Git-Lesson04-git-简介/" class="post-title-link" itemprop="url">Learn Git Lesson04 - .git 简介</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-08 19:16:06 / Modified: 19:16:30" itemprop="dateCreated datePublished" datetime="2019-08-08T19:16:06+08:00">2019-08-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="git简介"><a href="#git简介" class="headerlink" title=".git简介"></a>.git简介</h1><p>==============</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>了解 <code>.git 目录</code></li>
+<li>HEAD</li>
+<li>config</li>
+<li>refs</li>
+<li>objects</li>
+</ul>
+<h3 id="git-目录"><a href="#git-目录" class="headerlink" title=".git 目录"></a>.git 目录</h3><ul>
+<li>HEAD ： 标识了当前指向的分支</li>
+<li>config ： 本地的配置信息</li>
+</ul>
+<h4 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h4><p>修改分支，观察HEAD内容的变化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnGit on git:master x [16:30:38] C:1</span><br><span class="line">$ git branch temp</span><br><span class="line"></span><br><span class="line"><span class="variable">$max</span> @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnGit on git:master x [16:30:45] </span><br><span class="line">$ git checkout temp</span><br><span class="line">M       Lesson03/README.md</span><br><span class="line">Switched to branch <span class="string">'temp'</span></span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnGit on git:temp x [16:30:52] </span><br><span class="line">$ cat .git/HEAD</span><br><span class="line">ref: refs/heads/temp</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnGit on git:temp x [16:30:59] </span><br><span class="line">$ git checkout master</span><br><span class="line">M       Lesson03/README.md</span><br><span class="line">Switched to branch <span class="string">'master'</span></span><br><span class="line">Your branch is up to date with <span class="string">'origin/master'</span>.</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnGit on git:master x [16:31:07] </span><br><span class="line">$ cat .git/HEAD      </span><br><span class="line">ref: refs/heads/master</span><br></pre></td></tr></table></figure>
+<h4 id="config"><a href="#config" class="headerlink" title="config"></a>config</h4><p>修改config文件的用户名，观察变化</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnGit on git:master x </span><br><span class="line">$ cat .git/config                                 </span><br><span class="line">[core]</span><br><span class="line">        repositoryformatversion = 0</span><br><span class="line">        filemode = <span class="literal">true</span></span><br><span class="line">        bare = <span class="literal">false</span></span><br><span class="line">        logallrefupdates = <span class="literal">true</span></span><br><span class="line">        ignorecase = <span class="literal">true</span></span><br><span class="line">        precomposeunicode = <span class="literal">true</span></span><br><span class="line">[remote <span class="string">"origin"</span>]</span><br><span class="line">        url = https://github.com/Max-Van/learnGit.git</span><br><span class="line">        fetch = +refs/heads/*:refs/remotes/origin/*</span><br><span class="line">[branch <span class="string">"master"</span>]</span><br><span class="line">        remote = origin</span><br><span class="line">        merge = refs/heads/master</span><br><span class="line">[user]</span><br><span class="line">        name = max</span><br><span class="line">        email = maxffq@gmail.com</span><br><span class="line"><span class="variable">$max</span> @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnGit on git:master x </span><br><span class="line"></span><br><span class="line">$ vim .git/config </span><br><span class="line">将用户名从max改为maxfan</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnGit on git:master x</span><br><span class="line">$ git config --<span class="built_in">local</span> --list</span><br><span class="line"></span><br><span class="line">core.repositoryformatversion=0</span><br><span class="line">core.filemode=<span class="literal">true</span></span><br><span class="line">core.bare=<span class="literal">false</span></span><br><span class="line">core.logallrefupdates=<span class="literal">true</span></span><br><span class="line">core.ignorecase=<span class="literal">true</span></span><br><span class="line">core.precomposeunicode=<span class="literal">true</span></span><br><span class="line">remote.origin.url=https://github.com/Max-Van/learnGit.git</span><br><span class="line">remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*</span><br><span class="line">branch.master.remote=origin</span><br><span class="line">branch.master.merge=refs/heads/master</span><br><span class="line">user.name=maxfan</span><br><span class="line">user.email=maxffq@gmail.com</span><br></pre></td></tr></table></figure>
+<p>最后再将用户名改回</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnGit on git:master x </span><br><span class="line">$ git config --<span class="built_in">local</span> user.name <span class="string">'max'</span></span><br></pre></td></tr></table></figure>
+<h4 id="refs"><a href="#refs" class="headerlink" title="refs"></a>refs</h4><ul>
+<li>heads</li>
+<li>tags</li>
+<li>remote</li>
+</ul>
+<h5 id="heads"><a href="#heads" class="headerlink" title="heads"></a>heads</h5><p>heads 中存放着所有的分支,可以把分支看作独立的工作空间，在一定时间内保持各自研发的独立性，等分支开发的模块成熟后再合体到集成分支。</p>
+<p>heads 下有两个文件：master and temp</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/refs/heads on git:temp o </span><br><span class="line">$ ls -lh</span><br><span class="line">total 16</span><br><span class="line">-rw-r--r--  1 max  staff    41B Aug  4 17:32 master</span><br><span class="line">-rw-r--r--  1 max  staff    41B Aug  4 17:38 temp</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/refs/heads on git:temp o </span><br><span class="line">$ <span class="built_in">cd</span> master</span><br><span class="line"><span class="built_in">cd</span>: not a directory: master</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/refs/heads on git:temp o  C:1</span><br><span class="line">$ cat master</span><br><span class="line">8ac7ea2ae8d265c665490afaf7bd9910d5964a0a</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/refs/heads on git:temp o [18:27:49]</span><br><span class="line">$ git cat-file -t 8ac7ea2ae8d2</span><br><span class="line">commit</span><br></pre></td></tr></table></figure>
+<h5 id="tags"><a href="#tags" class="headerlink" title="tags"></a>tags</h5><p>Tag存储的是一个里程碑，里面指向了一个commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/refs/tags on git:temp o </span><br><span class="line">$ ls</span><br><span class="line">TagForCssfile</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/refs/tags on git:temp o </span><br><span class="line">$ cat TagForCssfile</span><br><span class="line">c6939ed60cd2c37b1838581be606e2c739c768f5</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/refs/tags on git:temp o </span><br><span class="line">$ git cat-file -t c6939ed60cd</span><br><span class="line">tag</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/refs/tags on git:temp o </span><br><span class="line"></span><br><span class="line">$ git cat-file -p c6939ed60cd</span><br><span class="line">object c7e0c93593ed1d3e8f6ac5e6c08c18d309e72ca6</span><br><span class="line"><span class="built_in">type</span> commit</span><br><span class="line">tag TagForCssfile</span><br><span class="line">tagger max &lt;maxffq@gmail.com&gt; 1564913891 +0800</span><br><span class="line"></span><br><span class="line">i create temp another branch temp based on this.</span><br></pre></td></tr></table></figure>
+<h3 id="objects"><a href="#objects" class="headerlink" title="objects"></a>objects</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/objects on git:temp o [18:40:09]</span><br><span class="line">$ ls</span><br><span class="line">04   20   5b   7f   87   96   a9   ac   b9   c7   <span class="built_in">cd</span>   d4   dd   fe   pack</span><br><span class="line">0d   50   6a   84   8a   a8   ab   b7   c6   c8   d0   da   f9   info</span><br></pre></td></tr></table></figure>
+<p>这两位+进去后的哈希值合在一起就是一棵树（Tree）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/objects on git:temp o [18:40:16]</span><br><span class="line">$ <span class="built_in">cd</span> fe</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/objects/fe on git:temp o [18:42:35]</span><br><span class="line">$ ls</span><br><span class="line">cf7e88657d195ec3a45becd06d7383281876ca</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/objects/fe on git:temp o [18:42:36]</span><br><span class="line">$ git cat-file -t fecf7e88657d19</span><br><span class="line">tree</span><br></pre></td></tr></table></figure>
+<p>继续进入这棵树</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/objects/fe on git:temp o </span><br><span class="line">$ git cat-file -p fecf7e88657d19</span><br><span class="line">100644 blob 7f40755ba1ea37aab9e1486bf26db55a7ce8dc48	README.md</span><br><span class="line">100644 blob 6ad4c68d567a1a5b415dcfce2010fce1a60b245f	index.html</span><br><span class="line">040000 tree a9424a073da3c077e48045696e4742b6def97702	styles</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/objects/fe on git:temp o [18:43:53]</span><br><span class="line">$ git cat-file -t 7f40755b</span><br><span class="line">blob</span><br><span class="line"></span><br><span class="line">$ max @ Maxs-MBP-2016 <span class="keyword">in</span> ~/Develop/learnhtml/.git/objects/fe on git:temp o [18:44:58]</span><br><span class="line">$ git cat-file -p 7f40755b</span><br><span class="line"> learnhtml</span><br><span class="line">html</span><br><span class="line">add this <span class="keyword">for</span> branch temp</span><br></pre></td></tr></table></figure>
+<p>任何文件的内容相同，其实就是同一个blob</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/08/08/Learn-Git-Lesson03-基本命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaxFan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/08/Learn-Git-Lesson03-基本命令/" class="post-title-link" itemprop="url">Learn Git Lesson03 - 基本命令</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-08 19:15:07 / Modified: 19:15:29" itemprop="dateCreated datePublished" datetime="2019-08-08T19:15:07+08:00">2019-08-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Git-基本命令"><a href="#Git-基本命令" class="headerlink" title="Git 基本命令"></a>Git 基本命令</h1><p>==============</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>了解 <strong>暂存区</strong></li>
+<li>Git add </li>
+<li>Git commit</li>
+<li>Git 分支</li>
+<li>Git push</li>
+</ul>
+<h2 id="Git-暂存区"><a href="#Git-暂存区" class="headerlink" title="Git 暂存区"></a>Git 暂存区</h2><p><img src="https://cdn-std.dprcdn.net/files/acc_136293/31XpLG" alt="git flow"></p>
+<ul>
+<li>git config –list [–local | –global | –system]</li>
+</ul>
+<h2 id="Git-add"><a href="#Git-add" class="headerlink" title="Git add"></a>Git add</h2><ul>
+<li>git add -u：将文件的修改、文件的删除，添加到暂存区。</li>
+<li>git add .：将文件的修改，文件的删除，文件的新建，添加到暂存区。</li>
+<li>git add -A：将文件的修改，文件的删除，文件的新建，添加到暂存区。</li>
+<li>git add -u 只能操作跟踪过的文件, git add -A 等同于git add -all</li>
+<li>git mv filename: 修改文件名称</li>
+</ul>
+<h2 id="Git-commit"><a href="#Git-commit" class="headerlink" title="Git commit"></a>Git commit</h2><ul>
+<li><p>git commit -m ‘修改原因’：将文件的修改、文件的删除，添加到暂存区。</p>
+</li>
+<li><p>git commit -ma ‘修改原因’：直接将修改推到暂存区（不需要add，不推荐这种做法）</p>
+</li>
+<li><p>git commit –amend ： 如果刚才commit时候填写的内容有误，需要修改，可以使用–amend来修改</p>
+</li>
+</ul>
+<h2 id="Git-分支"><a href="#Git-分支" class="headerlink" title="Git 分支"></a>Git 分支</h2><ul>
+<li>git branch -av : 查看分支</li>
+<li>git checkout branch_name : 创建分支 </li>
+<li>git checkout -b branch_name [commit_id] : 基于某一次提交创建分支并指向改分支</li>
+</ul>
+<h2 id="Git-reset"><a href="#Git-reset" class="headerlink" title="Git reset"></a>Git reset</h2><ul>
+<li>git reset –hard<br>清空暂存区</li>
+</ul>
+<h2 id="Git-log"><a href="#Git-log" class="headerlink" title="Git log"></a>Git log</h2><ul>
+<li>git log</li>
+<li>git log -n3 : 只显示最近三条的日志</li>
+<li>git log –oneline ：以短格式显示</li>
+<li>git log –all –graph：图形化显示所有分支</li>
+<li>git log –all –graph –oneline：图形化显示所有分支（简洁模式）</li>
+</ul>
+<h2 id="Git-help"><a href="#Git-help" class="headerlink" title="Git help"></a>Git help</h2><ul>
+<li>git help –web log</li>
+</ul>
+<h2 id="Git-push"><a href="#Git-push" class="headerlink" title="Git push"></a>Git push</h2><ul>
+<li>git push 讲缓冲区中的内容发送到仓库。 </li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/08/08/Learn-Git-Lesson02-基本配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaxFan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/08/Learn-Git-Lesson02-基本配置/" class="post-title-link" itemprop="url">Learn Git Lesson02 - 基本配置</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-08 19:14:08 / Modified: 19:14:28" itemprop="dateCreated datePublished" datetime="2019-08-08T19:14:08+08:00">2019-08-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="最小配置"><a href="#最小配置" class="headerlink" title="最小配置"></a>最小配置</h1><p>==============</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>查看配置</li>
+<li>添加配置</li>
+<li>区别</li>
+</ul>
+<h2 id="查看配置"><a href="#查看配置" class="headerlink" title="查看配置"></a>查看配置</h2><ul>
+<li>git config –list [–local | –global | –system]</li>
+</ul>
+<h2 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h2><ul>
+<li>git config [–local | –global | –system] user.name ‘Your name’</li>
+<li>git config [–local | –global | –system] user.email ‘Your email’</li>
+</ul>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ul>
+<li>local：区域为本仓库</li>
+<li>global: 当前用户的所有仓库</li>
+<li>system: 本系统的所有用户</li>
+</ul>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>###查看配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global --list</span><br><span class="line">$ git config --<span class="built_in">local</span> --list</span><br><span class="line">$ git config --system --list</span><br></pre></td></tr></table></figure></p>
+<p>###修改配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">'fan'</span></span><br><span class="line">$ git config --global user.email <span class="string">'maxffq@me.com'</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>类似的，我们可以修改local的配置（当两者有冲突时，local的配置会覆盖global的设置）</p>
+<p>local &gt; global &gt; system </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/08/08/Learn-Git-Lesson01-安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Max Fan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaxFan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/08/Learn-Git-Lesson01-安装/" class="post-title-link" itemprop="url">Learn Git Lesson01 - 安装</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-08 19:12:17 / Modified: 19:13:14" itemprop="dateCreated datePublished" datetime="2019-08-08T19:12:17+08:00">2019-08-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h1><p>==============</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>官网下载</li>
+<li>安装</li>
+<li>验证安装</li>
+</ul>
+<h2 id="官方网站"><a href="#官方网站" class="headerlink" title="官方网站"></a>官方网站</h2><p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://git-scm.com/book/zh/v2/起步-安装-Git" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/起步-安装-Git</a></p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><ul>
+<li><a href="https://git-scm.com/download/mac" target="_blank" rel="noopener">Mac安装</a></li>
+<li><a href="https://git-scm.com/download/win" target="_blank" rel="noopener">Windows安装</a></li>
+<li><a href="https://git-scm.com/download/linux" target="_blank" rel="noopener">Linux安装</a></li>
+</ul>
+<h2 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git --version</span><br><span class="line">git version 2.21.0</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/05/31/Generate-SSH-Key-To-Access-Linux-Server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -640,7 +1326,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

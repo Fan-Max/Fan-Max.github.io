@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="To access GCP linux server without password, one way is to generate SSH key pair , upload public key to linux and then use private key to access it. here’s the steps Create a SSH Key Pair1$ ssh-keygen">
+  <meta name="description" content="Git 基本命令============== 知识点 了解 暂存区 Git add  Git commit Git 分支 Git push  Git 暂存区  git config –list [–local | –global | –system]  Git add git add -u：将文件的修改、文件的删除，添加到暂存区。 git add .：将文件的修改，文件的删除，文件的新建，添加到暂">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Generate SSH Key To Access Linux Server">
-<meta property="og:url" content="https://fan-max.github.io/2019/05/31/Generate-SSH-Key-To-Access-Linux-Server/index.html">
+<meta property="og:title" content="Learn Git Lesson03 - 基本命令">
+<meta property="og:url" content="https://fan-max.github.io/2019/08/08/Learn-Git-Lesson03-基本命令/index.html">
 <meta property="og:site_name" content="MaxFan">
-<meta property="og:description" content="To access GCP linux server without password, one way is to generate SSH key pair , upload public key to linux and then use private key to access it. here’s the steps Create a SSH Key Pair1$ ssh-keygen">
+<meta property="og:description" content="Git 基本命令============== 知识点 了解 暂存区 Git add  Git commit Git 分支 Git push  Git 暂存区  git config –list [–local | –global | –system]  Git add git add -u：将文件的修改、文件的删除，添加到暂存区。 git add .：将文件的修改，文件的删除，文件的新建，添加到暂">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://cdn-std.dprcdn.net/files/acc_136293/wv0sb8">
-<meta property="og:updated_time" content="2019-06-02T05:13:51.321Z">
+<meta property="og:image" content="https://cdn-std.dprcdn.net/files/acc_136293/31XpLG">
+<meta property="og:updated_time" content="2019-08-08T11:15:29.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Generate SSH Key To Access Linux Server">
-<meta name="twitter:description" content="To access GCP linux server without password, one way is to generate SSH key pair , upload public key to linux and then use private key to access it. here’s the steps Create a SSH Key Pair1$ ssh-keygen">
-<meta name="twitter:image" content="https://cdn-std.dprcdn.net/files/acc_136293/wv0sb8">
+<meta name="twitter:title" content="Learn Git Lesson03 - 基本命令">
+<meta name="twitter:description" content="Git 基本命令============== 知识点 了解 暂存区 Git add  Git commit Git 分支 Git push  Git 暂存区  git config –list [–local | –global | –system]  Git add git add -u：将文件的修改、文件的删除，添加到暂存区。 git add .：将文件的修改，文件的删除，文件的新建，添加到暂">
+<meta name="twitter:image" content="https://cdn-std.dprcdn.net/files/acc_136293/31XpLG">
 
 
 
@@ -116,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="https://fan-max.github.io/2019/05/31/Generate-SSH-Key-To-Access-Linux-Server/">
+  <link rel="canonical" href="https://fan-max.github.io/2019/08/08/Learn-Git-Lesson03-基本命令/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>Generate SSH Key To Access Linux Server | MaxFan</title>
+  <title>Learn Git Lesson03 - 基本命令 | MaxFan</title>
   
 
 
@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/05/31/Generate-SSH-Key-To-Access-Linux-Server/">
+    <link itemprop="mainEntityOfPage" href="https://fan-max.github.io/2019/08/08/Learn-Git-Lesson03-基本命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Max Fan">
@@ -308,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Generate SSH Key To Access Linux Server
+          <h1 class="post-title" itemprop="name headline">Learn Git Lesson03 - 基本命令
 
               
             
@@ -334,24 +334,12 @@
                 
               
 
-              <time title="Created: 2019-05-31 22:32:29" itemprop="dateCreated datePublished" datetime="2019-05-31T22:32:29+08:00">2019-05-31</time>
+              <time title="Created: 2019-08-08 19:15:07 / Modified: 19:15:29" itemprop="dateCreated datePublished" datetime="2019-08-08T19:15:07+08:00">2019-08-08</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-02 13:13:51" itemprop="dateModified" datetime="2019-06-02T13:13:51+08:00">2019-06-02</time>
               
             
           </span>
@@ -385,23 +373,54 @@
       
 
       
-        <p>To access GCP linux server without password, one way is to generate SSH key pair , upload public key to linux and then use private key to access it. here’s the steps</p>
-<h3 id="Create-a-SSH-Key-Pair"><a href="#Create-a-SSH-Key-Pair" class="headerlink" title="Create a SSH Key Pair"></a>Create a SSH Key Pair</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -f ~/.ssh/ [KEY_FILENAME] -C [USERNAME]</span><br></pre></td></tr></table></figure>
-<p>For example, if we want to create the keys named <code>maxserverkey1</code> under path <code>*~/.ssh/*</code>, and we want to log in as user named <code>maxfan</code></p>
-<p>we can use following command</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -f ~/.ssh/maxserverkey1 -C maxfan</span><br></pre></td></tr></table></figure>
-<p>if it works, you can find two keys uner path ~/.ssh</p>
-<ul>
-<li>public key: <code>maxserverkey1</code></li>
-<li>private key: <code>maxserverkey1.pub</code></li>
+        <h1 id="Git-基本命令"><a href="#Git-基本命令" class="headerlink" title="Git 基本命令"></a>Git 基本命令</h1><p>==============</p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>了解 <strong>暂存区</strong></li>
+<li>Git add </li>
+<li>Git commit</li>
+<li>Git 分支</li>
+<li>Git push</li>
 </ul>
-<h3 id="Upload-the-public-key-to-GCP-VM"><a href="#Upload-the-public-key-to-GCP-VM" class="headerlink" title="Upload the public key to GCP VM"></a>Upload the public key to GCP VM</h3><p>And we need to upload the <code>public keys</code> to server (VM) (find more detail from demo)</p>
-<h3 id="Access-VM-with-private-key"><a href="#Access-VM-with-private-key" class="headerlink" title="Access VM with private key"></a>Access VM with private key</h3><p>So when we want to access the instance, we just need to use following command</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh [USER_NAME]@[SERVER_NAME]  -i ~/.ssh/[KEY_FILENAME]</span><br></pre></td></tr></table></figure>
-<p>Find the whole process : (it may take some time to load the gif )</p>
-<p><img src="https://cdn-std.dprcdn.net/files/acc_136293/wv0sb8" alt="demo"></p>
-<p>If you are working on windows, you can also refer to this :  </p>
-<p><a href="https://www.cnblogs.com/liuhaitao/p/6339926.html" target="_blank" rel="noopener">generate SSHK key with putty</a></p>
+<h2 id="Git-暂存区"><a href="#Git-暂存区" class="headerlink" title="Git 暂存区"></a>Git 暂存区</h2><p><img src="https://cdn-std.dprcdn.net/files/acc_136293/31XpLG" alt="git flow"></p>
+<ul>
+<li>git config –list [–local | –global | –system]</li>
+</ul>
+<h2 id="Git-add"><a href="#Git-add" class="headerlink" title="Git add"></a>Git add</h2><ul>
+<li>git add -u：将文件的修改、文件的删除，添加到暂存区。</li>
+<li>git add .：将文件的修改，文件的删除，文件的新建，添加到暂存区。</li>
+<li>git add -A：将文件的修改，文件的删除，文件的新建，添加到暂存区。</li>
+<li>git add -u 只能操作跟踪过的文件, git add -A 等同于git add -all</li>
+<li>git mv filename: 修改文件名称</li>
+</ul>
+<h2 id="Git-commit"><a href="#Git-commit" class="headerlink" title="Git commit"></a>Git commit</h2><ul>
+<li><p>git commit -m ‘修改原因’：将文件的修改、文件的删除，添加到暂存区。</p>
+</li>
+<li><p>git commit -ma ‘修改原因’：直接将修改推到暂存区（不需要add，不推荐这种做法）</p>
+</li>
+<li><p>git commit –amend ： 如果刚才commit时候填写的内容有误，需要修改，可以使用–amend来修改</p>
+</li>
+</ul>
+<h2 id="Git-分支"><a href="#Git-分支" class="headerlink" title="Git 分支"></a>Git 分支</h2><ul>
+<li>git branch -av : 查看分支</li>
+<li>git checkout branch_name : 创建分支 </li>
+<li>git checkout -b branch_name [commit_id] : 基于某一次提交创建分支并指向改分支</li>
+</ul>
+<h2 id="Git-reset"><a href="#Git-reset" class="headerlink" title="Git reset"></a>Git reset</h2><ul>
+<li>git reset –hard<br>清空暂存区</li>
+</ul>
+<h2 id="Git-log"><a href="#Git-log" class="headerlink" title="Git log"></a>Git log</h2><ul>
+<li>git log</li>
+<li>git log -n3 : 只显示最近三条的日志</li>
+<li>git log –oneline ：以短格式显示</li>
+<li>git log –all –graph：图形化显示所有分支</li>
+<li>git log –all –graph –oneline：图形化显示所有分支（简洁模式）</li>
+</ul>
+<h2 id="Git-help"><a href="#Git-help" class="headerlink" title="Git help"></a>Git help</h2><ul>
+<li>git help –web log</li>
+</ul>
+<h2 id="Git-push"><a href="#Git-push" class="headerlink" title="Git push"></a>Git push</h2><ul>
+<li>git push 讲缓冲区中的内容发送到仓库。 </li>
+</ul>
 
       
     </div>
@@ -432,8 +451,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/28/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/08/08/Learn-Git-Lesson02-基本配置/" rel="next" title="Learn Git Lesson02 - 基本配置">
+                <i class="fa fa-chevron-left"></i> Learn Git Lesson02 - 基本配置
               </a>
             
           </div>
@@ -442,8 +461,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/08/Learn-Git-Lesson01-安装/" rel="prev" title="Learn Git Lesson01 - 安装">
-                Learn Git Lesson01 - 安装 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/08/Learn-Git-Lesson04-git-简介/" rel="prev" title="Learn Git Lesson04 - .git 简介">
+                Learn Git Lesson04 - .git 简介 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -555,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-SSH-Key-Pair"><span class="nav-number">1.</span> <span class="nav-text">Create a SSH Key Pair</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Upload-the-public-key-to-GCP-VM"><span class="nav-number">2.</span> <span class="nav-text">Upload the public key to GCP VM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-VM-with-private-key"><span class="nav-number">3.</span> <span class="nav-text">Access VM with private key</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-基本命令"><span class="nav-number">1.</span> <span class="nav-text">Git 基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点"><span class="nav-number">1.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-暂存区"><span class="nav-number">1.2.</span> <span class="nav-text">Git 暂存区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-add"><span class="nav-number">1.3.</span> <span class="nav-text">Git add</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-commit"><span class="nav-number">1.4.</span> <span class="nav-text">Git commit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-分支"><span class="nav-number">1.5.</span> <span class="nav-text">Git 分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-reset"><span class="nav-number">1.6.</span> <span class="nav-text">Git reset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-log"><span class="nav-number">1.7.</span> <span class="nav-text">Git log</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-help"><span class="nav-number">1.8.</span> <span class="nav-text">Git help</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-push"><span class="nav-number">1.9.</span> <span class="nav-text">Git push</span></a></li></ol></li></ol></div>
             
 
           </div>
